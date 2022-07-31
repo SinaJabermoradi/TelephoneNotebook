@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "59Enr/RWrgrCVilaFoMGa6l4fhk/y75dbLIPREMLVMjUpP3AaxAG52E0Ia9sK4OzD3k22dc11PqElxACpr6kgQ==",
+  "success": true,
+  "projectFilePath": "D:\\_MY C# PROJECT\\TelephoneNotebook\\TelephoneNotebook\\TelephoneNotebook.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sina\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.12\\microsoft.netcore.app.host.win-x64.3.1.12.nupkg.sha512"
+  ],
+  "logs": []
+}
