@@ -1,0 +1,13 @@
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\bin\Debug\netcoreapp3.1\TelephoneNotebook.exe
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\bin\Debug\netcoreapp3.1\TelephoneNotebook.deps.json
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\bin\Debug\netcoreapp3.1\TelephoneNotebook.runtimeconfig.json
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\bin\Debug\netcoreapp3.1\TelephoneNotebook.runtimeconfig.dev.json
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\bin\Debug\netcoreapp3.1\TelephoneNotebook.dll
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\bin\Debug\netcoreapp3.1\TelephoneNotebook.pdb
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\obj\Debug\netcoreapp3.1\TelephoneNotebook.csprojAssemblyReference.cache
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\obj\Debug\netcoreapp3.1\TelephoneNotebook.AssemblyInfoInputs.cache
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\obj\Debug\netcoreapp3.1\TelephoneNotebook.AssemblyInfo.cs
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\obj\Debug\netcoreapp3.1\TelephoneNotebook.csproj.CoreCompileInputs.cache
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\obj\Debug\netcoreapp3.1\TelephoneNotebook.dll
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\obj\Debug\netcoreapp3.1\TelephoneNotebook.pdb
+D:\_MY C# PROJECT\TelephoneNotebook\TelephoneNotebook\obj\Debug\netcoreapp3.1\TelephoneNotebook.genruntimeconfig.cache
