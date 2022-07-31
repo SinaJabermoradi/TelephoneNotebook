@@ -20,7 +20,7 @@ namespace TelephoneNotebook
             Console.WriteLine();
             Console.WriteLine("Please Select an options (1 to 6): ");
 
-
+            string option = Console.ReadLine();
 
 
             Console.ReadKey();
