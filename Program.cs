@@ -12,19 +12,20 @@ namespace TelephoneNotebook
             while (true)
             {
                 Console.Clear();
+                Console.Title = "دفترچه تلفن لوکس";
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Wellcome To Telphone Notebook");
-                Console.WriteLine("--------------------------------------------");
-                Console.WriteLine();
+                Console.WriteLine("                              Wellcome To Telphone Notebook");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("                --------------------------------------------------------------\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("A => Add");
-                Console.WriteLine("U => Update");
-                Console.WriteLine("D => Delete");
-                Console.WriteLine("SNA => Search By Name");
-                Console.WriteLine("SNU => Search By Number");
-                Console.WriteLine("E => Exit");
-                Console.WriteLine();
-                Console.Write("Please Select an options (1 to 6): ");
+                Console.WriteLine("                              A   => Add");
+                Console.WriteLine("                              U   => Update");
+                Console.WriteLine("                              D   => Delete");
+                Console.WriteLine("                              SNA => Search By Name");
+                Console.WriteLine("                              SNU => Search By Number");
+                Console.WriteLine("                              E   => Exit");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.Write("\n                              Please Select an options (1 to 6): ");
 
                 string option = Console.ReadLine();
 
