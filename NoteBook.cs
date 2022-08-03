@@ -88,7 +88,7 @@ namespace TelephoneNotebook
             return null;
         }
 
-        public void Update(string userPhoneNumber, Contact newPerson)
+        public void Update(string userPhoneNumber, IContact newPerson)
         {
             for (int temp = 0; temp < _contactList.Count; temp++)
             {
