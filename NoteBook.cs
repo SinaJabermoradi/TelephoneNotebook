@@ -52,18 +52,27 @@ namespace TelephoneNotebook
             }
         }
 
-        public void Delete(string userPhoneNumber)
+        public void Delete(long userPhoneNumber)
         {
             for (int temp = 0; temp < _contactList.Count; temp++)
             {
-                if (_contactList[temp] != null && _contactList[temp].PhoneNumber == Convert.ToInt64(userPhoneNumber))
+                if (_contactList[temp] != null && _contactList[temp].PhoneNumber == userPhoneNumber)
                 {
                     _contactList[temp] = null;
+
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                    Console.WriteLine("\n                              The User Sucssesfuly Deleted ");
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("This Number does Not Exist");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    Console.WriteLine("                --------------------------------------------------------------\n");
+
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                    Console.WriteLine("\n                              This Number does Not Exist In Note Book ");
                 }
             }
         }
@@ -100,6 +109,21 @@ namespace TelephoneNotebook
                     _contactList[temp].HomeAddress = newPerson.HomeAddress;
                 }
             }
+        }
+
+        public void ErrorMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine("                --------------------------------------------------------------\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+
+            Console.WriteLine("\n                 Error----Error----Error----Error----Error----Error----Error");
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+            Console.WriteLine("\n                              Press Enter To Refresh Software ");
         }
 
         #endregion
