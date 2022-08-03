@@ -34,24 +34,44 @@ namespace TelephoneNotebook
                 {
                     case "a":
                         {
-                            IContact contact = new Contact();
-                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                           
-                            Console.WriteLine("--------------------------------------------------------");
-                            Console.Write("FullName : ");
-                            contact.FullName = Console.ReadLine();
+                            try
+                            {
+                                IContact contact = new Contact();
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-                            Console.Write("PhoneNumber : ");
-                            contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+                                Console.WriteLine("                --------------------------------------------------------------\n");
+                                Console.Write("                              FullName : ");
+                                contact.FullName = Console.ReadLine();
 
-                            Console.Write("EmailAddress : ");
-                            contact.EmailAddress = Console.ReadLine();
+                                Console.Write("                              PhoneNumber : ");
+                                contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
 
-                            Console.Write("HomeAddress : ");
-                            contact.HomeAddress = Console.ReadLine();
+                                Console.Write("                              EmailAddress : ");
+                                contact.EmailAddress = Console.ReadLine();
 
-                            PhoneBook.Add(contact);
+                                Console.Write("                              HomeAddress : ");
+                                contact.HomeAddress = Console.ReadLine();
 
+                                PhoneBook.Add(contact);
+
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                                Console.WriteLine("\n                              The User Sucssesfuly Added ");
+                            }
+                            catch (Exception)
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+
+                                Console.WriteLine("                --------------------------------------------------------------\n");
+
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+
+                                Console.WriteLine("\n                 Erorr----Erorr----Erorr----Erorr----Erorr----Erorr----Erorr");
+
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                                Console.WriteLine("\n                              Press Enter To Refresh Software ");
+                            }
                             break;
                         }
                     case "u":
@@ -67,7 +87,7 @@ namespace TelephoneNotebook
                             Console.Write("UserPhoneNumber : ");
                             string UserNumber = Console.ReadLine();
                             PhoneBook.Delete(UserNumber);
-                            
+
                             break;
                         }
                     case "4":
