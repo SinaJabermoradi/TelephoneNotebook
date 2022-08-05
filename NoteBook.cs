@@ -259,7 +259,6 @@ namespace TelephoneNotebook
                               $"                              UserHomeAddress = {person.HomeAddress} \n" );
         }
 
-
         #endregion
 
     }

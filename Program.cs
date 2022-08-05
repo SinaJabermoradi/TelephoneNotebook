@@ -4,6 +4,25 @@ namespace TelephoneNotebook
 {
     public class Program
     {
+        public static IContact InsertContact(string message)
+        {
+            IContact contact = new Contact();
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.Write($"\n                              {message}FullName : ");
+            contact.FullName = Console.ReadLine();
+
+            Console.Write($"                              {message}PhoneNumber : ");
+            contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+
+            Console.Write($"                              {message}EmailAddress : ");
+            contact.EmailAddress = Console.ReadLine();
+
+            Console.Write($"                              {message}HomeAddress : ");
+            contact.HomeAddress = Console.ReadLine();
+
+            return contact;
+        }
 
         static void Main(string[] args)
         {
@@ -12,7 +31,7 @@ namespace TelephoneNotebook
             while (true)
             {
                 Console.Clear();
-                Console.Title = "دفترچه تلفن لوکس";
+                Console.Title = " WellCome To Sina Jabermoradi TelePhoneNotebook ";
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine($"                              Telphone Notebook (( TotalContacts = {PhoneBook.TotalContacts} ))");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -29,38 +48,17 @@ namespace TelephoneNotebook
 
                 string option = Console.ReadLine();
 
-
                 switch (option.ToLower())
                 {
                     case "a":
                         {
                             try
                             {
-                                IContact contact = new Contact();
-
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("                --------------------------------------------------------------\n");
                                 Console.WriteLine("                              Please Fill The Following Items : ");
-                                
-                                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                                Console.Write("\n                              FullName : ");
-                                contact.FullName = Console.ReadLine();
 
-                                Console.Write("                              PhoneNumber : ");
-                                contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
-
-                                Console.Write("                              EmailAddress : ");
-                                contact.EmailAddress = Console.ReadLine();
-
-                                Console.Write("                              HomeAddress : ");
-                                contact.HomeAddress = Console.ReadLine();
-
-                                PhoneBook.Add(contact);
-
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                Console.WriteLine("\n                              The User Sucssesfuly Added ");
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine($"\n                              Press Enter To Use Software Again ");
+                                PhoneBook.Add(InsertContact(""));
                             }
                             catch (Exception)
                             {
@@ -70,7 +68,26 @@ namespace TelephoneNotebook
                         }
                     case "u":
                         {
+                            try
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("                --------------------------------------------------------------\n");
+                                Console.WriteLine("                              Please Fill The Following Items : ");
 
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.Write("\n                              LastPhoneNumber : ");
+                                long LastUserPhoneNumber = Convert.ToInt64(Console.ReadLine());
+
+
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("\n                --------------------------------------------------------------\n");
+
+                                PhoneBook.Update(LastUserPhoneNumber, InsertContact("New"));
+                            }
+                            catch (Exception)
+                            {
+                                PhoneBook.ErrorMenu();
+                            }
                             break;
                         }
                     case "d":
@@ -86,7 +103,6 @@ namespace TelephoneNotebook
                                 long UserPhoneNumber = Convert.ToInt64(Console.ReadLine());
 
                                 PhoneBook.Delete(UserPhoneNumber);
-                                
                             }
                             catch (Exception)
                             {
@@ -95,20 +111,38 @@ namespace TelephoneNotebook
                            
                             break;
                         }
-                    case "4":
+                    case "sna":
                         {
+
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("                --------------------------------------------------------------\n");
+                            Console.WriteLine("                              Please Fill The Following Items : ");
+
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write("\n                              YourContactFullName : ");
+                            string ContactName = Console.ReadLine();
+
+                            PhoneBook.SearchByName(ContactName);
 
                             break;
                         }
-                    case "5":
+                    case "snu":
                         {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("                --------------------------------------------------------------\n");
+                            Console.WriteLine("                              Please Fill The Following Items : ");
+
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write("\n                              YourContactNumber : ");
+                            long ContactNumber = Convert.ToInt64(Console.ReadLine());
+
+                            PhoneBook.SearchByNumber(ContactNumber);
 
                             break;
                         }
-                    case "6":
+                    case "e":
                         {
-
-                            break;
+                            return;
                         }
 
                     default:
@@ -130,7 +164,6 @@ namespace TelephoneNotebook
                 }
 
                 Console.ReadKey();
-
             }
         }
     }
