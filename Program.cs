@@ -14,7 +14,7 @@ namespace TelephoneNotebook
                 Console.Clear();
                 Console.Title = "دفترچه تلفن لوکس";
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("                              Wellcome To Telphone Notebook");
+                Console.WriteLine($"                              Wellcome To Telphone Notebook (( TotalContacts = {PhoneBook.TotalContacts} ))");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("                --------------------------------------------------------------\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -57,20 +57,11 @@ namespace TelephoneNotebook
                                 Console.ForegroundColor = ConsoleColor.DarkCyan;
 
                                 Console.WriteLine("\n                              The User Sucssesfuly Added ");
+                                Console.WriteLine($"\n                              Press Enter To Use Software Again ");
                             }
                             catch (Exception)
                             {
-                                Console.ForegroundColor = ConsoleColor.White;
-
-                                Console.WriteLine("                --------------------------------------------------------------\n");
-
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-
-                                Console.WriteLine("\n                 Erorr----Erorr----Erorr----Erorr----Erorr----Erorr----Erorr");
-
-                                Console.ForegroundColor = ConsoleColor.DarkCyan;
-
-                                Console.WriteLine("\n                              Press Enter To Refresh Software ");
+                                PhoneBook.ErrorMenu();
                             }
                             break;
                         }
@@ -81,13 +72,21 @@ namespace TelephoneNotebook
                         }
                     case "d":
                         {
+                            try
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            Console.WriteLine("--------------------------------------------------------");
-                            Console.Write("UserPhoneNumber : ");
-                            string UserNumber = Console.ReadLine();
-                            PhoneBook.Delete(UserNumber);
+                                Console.WriteLine("                --------------------------------------------------------------\n");
+                                Console.Write("                              UserPhoneNumber : ");
+                                long UserPhoneNumber = Convert.ToInt64(Console.ReadLine());
 
+                                PhoneBook.Delete(UserPhoneNumber);
+                            }
+                            catch (Exception)
+                            {
+                                PhoneBook.ErrorMenu();
+                            }
+                           
                             break;
                         }
                     case "4":

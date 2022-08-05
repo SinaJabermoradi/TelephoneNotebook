@@ -9,7 +9,7 @@ namespace TelephoneNotebook
         #region Attributes
 
         private string _fullName;
-        private long _phoneNumber;
+        private long _phoneNumber = 0;
         private string _emailAddress;
         private string _homeAddress;
 
@@ -28,7 +28,7 @@ namespace TelephoneNotebook
         {
             get { return _phoneNumber; }
             set { _phoneNumber = value; }
-        }
+        } 
 
         public string EmailAddress
         {
@@ -42,9 +42,6 @@ namespace TelephoneNotebook
         }
 
         #endregion
-
-
-
 
     }
 }

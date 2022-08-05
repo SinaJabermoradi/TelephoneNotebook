@@ -8,8 +8,9 @@ namespace TelephoneNotebook
     {
         #region Atributes 
 
-        private List<Contact> _contactList = null;
+        private readonly List<IContact> _contactList = null;
         private int _personCount = 0;
+        private bool _deleteFlag = true;
 
         #endregion
 
@@ -17,7 +18,7 @@ namespace TelephoneNotebook
 
         public NoteBook()
         {
-            _contactList = new List<Contact>();
+            _contactList = new List<IContact>();
         }
 
         #endregion
@@ -28,10 +29,14 @@ namespace TelephoneNotebook
         {
             get
             {
-                for (int temp = 0; temp < _contactList.Count; temp++)
+                _personCount = 0;
+
+                foreach (IContact contact in _contactList)
                 {
-                    if (_contactList[temp] != null)
+                    if (contact != null)
+                    {
                         _personCount++;
+                    }
                 }
                 return _personCount;
             }
@@ -43,35 +48,31 @@ namespace TelephoneNotebook
 
         public void Add(IContact newPerson)
         {
-            foreach (Contact person in _contactList)
-            {
-                person.FullName = newPerson.FullName;
-                person.PhoneNumber = newPerson.PhoneNumber;
-                person.EmailAddress = person.EmailAddress;
-                person.HomeAddress = newPerson.HomeAddress;
-            }
+            _contactList.Add(newPerson);
         }
 
         public void Delete(long userPhoneNumber)
         {
-            for (int temp = 0; temp < _contactList.Count; temp++)
+            foreach (IContact people in _contactList)
             {
-                if (_contactList[temp] != null && _contactList[temp].PhoneNumber == userPhoneNumber)
+                if (people.PhoneNumber == userPhoneNumber)
                 {
-                    _contactList[temp] = null;
+                    people.FullName = null;
+                    people.PhoneNumber = 0;
+                    people.EmailAddress = null;
+                    people.HomeAddress = null;
 
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-
                     Console.WriteLine("\n                              The User Sucssesfuly Deleted ");
+
+                    _deleteFlag = false;
                 }
-                else
+
+                if (_deleteFlag)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-
                     Console.WriteLine("                --------------------------------------------------------------\n");
-
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-
                     Console.WriteLine("\n                              This Number does Not Exist In Note Book ");
                 }
             }
@@ -79,36 +80,26 @@ namespace TelephoneNotebook
 
         public IContact SearchByName(string userName)
         {
-            for (int temp = 0; temp < _contactList.Count; temp++)
-            {
-                if (_contactList[temp] != null && _contactList[temp].FullName == userName)
-                    return _contactList[temp];
-            }
             return null;
         }
 
         public IContact SearchByNumber(string userPhoneNumber)
         {
-            for (int temp = 0; temp < _contactList.Count; temp++)
-            {
-                if (_contactList[temp] != null && _contactList[temp].PhoneNumber == Convert.ToInt64(userPhoneNumber))
-                    return _contactList[temp];
-            }
             return null;
         }
 
         public void Update(string userPhoneNumber, IContact newPerson)
         {
-            for (int temp = 0; temp < _contactList.Count; temp++)
-            {
-                if (_contactList[temp].PhoneNumber == Convert.ToInt64(userPhoneNumber))
-                {
-                    _contactList[temp].FullName = newPerson.FullName;
-                    _contactList[temp].PhoneNumber = newPerson.PhoneNumber;
-                    _contactList[temp].EmailAddress = newPerson.EmailAddress;
-                    _contactList[temp].HomeAddress = newPerson.HomeAddress;
-                }
-            }
+            //for (int temp = 0; temp < _contactList.Length; temp++)
+            //{
+            //    if (_contactList[temp].PhoneNumber == Convert.ToInt64(userPhoneNumber))
+            //    {
+            //        _contactList[temp].FullName = newPerson.FullName;
+            //        _contactList[temp].PhoneNumber = newPerson.PhoneNumber;
+            //        _contactList[temp].EmailAddress = newPerson.EmailAddress;
+            //        _contactList[temp].HomeAddress = newPerson.HomeAddress;
+            //    }
+            //}
         }
 
         public void ErrorMenu()
