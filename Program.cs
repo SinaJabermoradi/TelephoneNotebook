@@ -14,7 +14,7 @@ namespace TelephoneNotebook
                 Console.Clear();
                 Console.Title = "دفترچه تلفن لوکس";
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine($"                              Wellcome To Telphone Notebook (( TotalContacts = {PhoneBook.TotalContacts} ))");
+                Console.WriteLine($"                              Telphone Notebook (( TotalContacts = {PhoneBook.TotalContacts} ))");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("                --------------------------------------------------------------\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -24,8 +24,8 @@ namespace TelephoneNotebook
                 Console.WriteLine("                              SNA => Search By Name");
                 Console.WriteLine("                              SNU => Search By Number");
                 Console.WriteLine("                              E   => Exit");
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.Write("\n                              Please Select an options (1 to 6): ");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write("\n                              Please Select an options (A to E): ");
 
                 string option = Console.ReadLine();
 
@@ -37,10 +37,13 @@ namespace TelephoneNotebook
                             try
                             {
                                 IContact contact = new Contact();
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
 
+                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("                --------------------------------------------------------------\n");
-                                Console.Write("                              FullName : ");
+                                Console.WriteLine("                              Please Fill The Following Items : ");
+                                
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.Write("\n                              FullName : ");
                                 contact.FullName = Console.ReadLine();
 
                                 Console.Write("                              PhoneNumber : ");
@@ -54,9 +57,9 @@ namespace TelephoneNotebook
 
                                 PhoneBook.Add(contact);
 
-                                Console.ForegroundColor = ConsoleColor.DarkCyan;
-
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 Console.WriteLine("\n                              The User Sucssesfuly Added ");
+                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine($"\n                              Press Enter To Use Software Again ");
                             }
                             catch (Exception)
@@ -74,13 +77,16 @@ namespace TelephoneNotebook
                         {
                             try
                             {
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-
+                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("                --------------------------------------------------------------\n");
-                                Console.Write("                              UserPhoneNumber : ");
+                                Console.WriteLine("                              Please Fill The Following Item : ");
+
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.Write("\n                              UserPhoneNumber : ");
                                 long UserPhoneNumber = Convert.ToInt64(Console.ReadLine());
 
                                 PhoneBook.Delete(UserPhoneNumber);
+                                
                             }
                             catch (Exception)
                             {
@@ -102,6 +108,23 @@ namespace TelephoneNotebook
                     case "6":
                         {
 
+                            break;
+                        }
+
+                    default:
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+
+                            Console.WriteLine("                --------------------------------------------------------------\n");
+
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            
+                            Console.Write("\n                              Please Chose One of List Option ");
+                            
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                            Console.WriteLine("\n\n                              Press Enter To Refresh Software ");
+                           
                             break;
                         }
                 }
