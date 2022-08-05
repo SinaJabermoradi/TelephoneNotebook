@@ -53,28 +53,31 @@ namespace TelephoneNotebook
 
         public void Delete(long userPhoneNumber)
         {
+            _deleteFlag = true;
+
             foreach (IContact people in _contactList)
             {
                 if (people.PhoneNumber == userPhoneNumber)
                 {
-                    people.FullName = null;
-                    people.PhoneNumber = 0;
-                    people.EmailAddress = null;
-                    people.HomeAddress = null;
+                    _contactList.Remove(people);
 
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("\n                              The User Sucssesfuly Deleted ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($"\n                              Press Enter To Use Software Again ");
 
                     _deleteFlag = false;
+                    break;
                 }
+            }
 
-                if (_deleteFlag)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("                --------------------------------------------------------------\n");
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.WriteLine("\n                              This Number does Not Exist In Note Book ");
-                }
+            if (_deleteFlag)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("                --------------------------------------------------------------\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n                              This Number does Not Exist In NoteBook ");
             }
         }
 
@@ -112,7 +115,7 @@ namespace TelephoneNotebook
 
             Console.WriteLine("\n                 Error----Error----Error----Error----Error----Error----Error");
 
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
 
             Console.WriteLine("\n                              Press Enter To Refresh Software ");
         }
