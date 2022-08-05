@@ -7,7 +7,7 @@ namespace TelephoneNotebook
     public class NoteBook : INoteBook
     {
         #region Atributes 
-
+        
         private readonly List<IContact> _contactList = null;
         private int _personCount = 0;
         private bool _deleteFlag = true;
@@ -24,7 +24,10 @@ namespace TelephoneNotebook
         #endregion
 
         #region Setter & Getter
-
+        
+        /// <summary>
+        /// Return Total Cantacts
+        /// </summary>
         public int TotalContacts
         {
             get
@@ -46,13 +49,30 @@ namespace TelephoneNotebook
 
         #region Oprations
 
+        /// <summary>
+        /// Deleted a Specifics Contact 
+        /// </summary>
+        /// <param name="newPerson">
+        /// Your New Contact
+        /// </param>
         public void Add(IContact newPerson)
         {
+            const string SUCCESSFULYMASSAGE = " Added";
+
             _contactList.Add(newPerson);
+
+            this.SuccessfulyMassage(SUCCESSFULYMASSAGE);
         }
 
+        /// <summary>
+        /// Deleted a Specifics Contact 
+        /// </summary>
+        /// <param name="userPhoneNumber">
+        /// Find The Specefics Contact With The Help Of Contact Number
+        /// </param>
         public void Delete(long userPhoneNumber)
         {
+            const string SUCCESSFULYMASSAGE = " Deleted";
             _deleteFlag = true;
 
             foreach (IContact people in _contactList)
@@ -61,11 +81,8 @@ namespace TelephoneNotebook
                 {
                     _contactList.Remove(people);
 
-
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("\n                              The User Sucssesfuly Deleted ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"\n                              Press Enter To Use Software Again ");
+                    this.ShowContactToEndUser(people);
+                    this.SuccessfulyMassage(SUCCESSFULYMASSAGE);
 
                     _deleteFlag = false;
                     break;
@@ -81,30 +98,92 @@ namespace TelephoneNotebook
             }
         }
 
-        public IContact SearchByName(string userName)
+        /// <summary>
+        /// Search a Specifics Contact 
+        /// </summary>
+        /// <param name="userName">
+        /// Find The Specefics Contact With The Help Of Contact Name
+        /// </param>
+        public void SearchByName(string userName)
         {
-            return null;
+            const string ERRORMESSAGE = " You Cant Search This Contact";
+
+            if (!this.IsContactListEmpty(ERRORMESSAGE))
+            {
+                foreach (IContact people in _contactList)
+                {
+                    if (people.FullName == userName)
+                    {
+                        this.ShowContactToEndUser(people);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($"\n                              Press Enter To Use Software Again ");
+                        break;
+                    }
+                }
+            }
         }
 
-        public IContact SearchByNumber(string userPhoneNumber)
+        /// <summary>
+        /// Search a Specifics Contact 
+        /// </summary>
+        /// <param name="userPhoneNumber">
+        /// Find The Specefics Contact With The Help Of Contact Number
+        /// </param>
+        public void SearchByNumber(long userPhoneNumber)
         {
-            return null;
+            const string ERRORMESSAGE = " You Cant Search This Contact";
+
+            if (!this.IsContactListEmpty(ERRORMESSAGE))
+            {
+                foreach (IContact people in _contactList)
+                {
+                    if (people.PhoneNumber == userPhoneNumber)
+                    {
+                        this.ShowContactToEndUser(people);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($"\n                              Press Enter To Use Software Again ");
+                        break;
+                    }
+                }
+            }
         }
 
-        public void Update(string userPhoneNumber, IContact newPerson)
+        /// <summary>
+        /// Updates a Specifics Contact 
+        /// </summary>
+        /// <param name="userPhoneNumber">
+        /// Find The Specefics Contact With The Help Of Contact Number
+        /// </param>
+        /// <param name="newPerson">
+        /// Your New Contact
+        /// </param>
+        public void Update(long userPhoneNumber, IContact newPerson)
         {
-            //for (int temp = 0; temp < _contactList.Length; temp++)
-            //{
-            //    if (_contactList[temp].PhoneNumber == Convert.ToInt64(userPhoneNumber))
-            //    {
-            //        _contactList[temp].FullName = newPerson.FullName;
-            //        _contactList[temp].PhoneNumber = newPerson.PhoneNumber;
-            //        _contactList[temp].EmailAddress = newPerson.EmailAddress;
-            //        _contactList[temp].HomeAddress = newPerson.HomeAddress;
-            //    }
-            //}
+            const string ERRORMESSAGE = " You Cant Update This Contact";
+            const string SUCCESSFULYMASSAGE = " Updated";
+
+            if (!this.IsContactListEmpty(ERRORMESSAGE))
+            {
+                foreach (IContact people in _contactList)
+                {
+                    if (people.PhoneNumber == userPhoneNumber)
+                    {
+                        people.FullName = newPerson.FullName;
+                        people.PhoneNumber = newPerson.PhoneNumber;
+                        people.EmailAddress = newPerson.EmailAddress;
+                        people.HomeAddress = newPerson.HomeAddress;
+
+                        this.ShowContactToEndUser(people);
+                        this.SuccessfulyMassage(SUCCESSFULYMASSAGE);
+                        break;
+                    }
+                }
+            }
         }
 
+        /// <summary>
+        /// Show Error To End User
+        /// </summary>
         public void ErrorMenu()
         {
             Console.ForegroundColor = ConsoleColor.White;
@@ -120,8 +199,68 @@ namespace TelephoneNotebook
             Console.WriteLine("\n                              Press Enter To Refresh Software ");
         }
 
-        #endregion
+        /// <summary>
+        /// </summary>
+        /// <param name="massage">
+        /// Your Error Message
+        /// </param>
+        /// <returns>
+        /// true : When ContactList was Empty (( ContactList.Count == 0 )).
+        /// 
+        /// false : When ContactList was NotEmpty (( ContactList.Count != 0 )) .
+        /// </returns>
+        public bool IsContactListEmpty(string message)
+        {
+            if (_contactList.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("                --------------------------------------------------------------\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"\n                    {message} , BeCause The NoteBook Is Empty ");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        /// <summary>
+        /// Show Success Message To The EndUser
+        /// </summary>
+        /// <param name="massage">
+        /// Key Word For Your Operation
+        /// </param>
+        public void SuccessfulyMassage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine($"\n                              The User Successfuly {message}");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"\n                              Press Enter To Use Software Again ");
+        }
+
+        /// <summary>
+        /// Show The Contact To The End User  
+        /// </summary>
+        /// <param name="person">
+        /// Your Contact
+        /// </param>
+        public void ShowContactToEndUser(IContact person)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                --------------------------------------------------------------\n");
+            Console.WriteLine("                              This Is Your Contact : \n");
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine($"                              UserFullName = {person.FullName} \n" +
+                              $"                              UserPhoneNumber = {person.PhoneNumber} \n" +
+                              $"                              UserEmailAddress = {person.EmailAddress} \n" +
+                              $"                              UserHomeAddress = {person.HomeAddress} \n" );
+        }
+
+
+        #endregion
 
     }
 }

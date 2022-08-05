@@ -6,6 +6,7 @@ namespace TelephoneNotebook
 {
     public class Contact : IContact
     {
+
         #region Attributes
 
         private string _fullName;
@@ -15,7 +16,6 @@ namespace TelephoneNotebook
 
         #endregion
 
-
         #region Set & Get
 
         public string FullName
@@ -23,13 +23,11 @@ namespace TelephoneNotebook
             get { return _fullName; }
             set { _fullName = value; }
         }
-
         public long PhoneNumber
         {
             get { return _phoneNumber; }
             set { _phoneNumber = value; }
         } 
-
         public string EmailAddress
         {
             get { return _emailAddress; }
