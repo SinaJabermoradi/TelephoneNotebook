@@ -14,6 +14,9 @@ namespace TelephoneNotebook
 
         #endregion
 
+
+        #region Behavior
+
         #region Constractors
 
         public NoteBook()
@@ -261,5 +264,6 @@ namespace TelephoneNotebook
 
         #endregion
 
+        #endregion
     }
 }
